@@ -10,7 +10,7 @@ const signup = async (req, res) => {
     // Token Generate
 
 
-    const { username, email, password } = req.body;
+    const { firstname,lastname,mobile, email, password } = req.body;
     try {
         // Existing user Check
         const ExistingUser = await userModel.findOne({ email: email });
@@ -26,7 +26,9 @@ const signup = async (req, res) => {
         const result = await userModel.create({
             email: email,
             password: hashedPassword,
-            username: username
+            firstname: firstname,
+            lastname:lastname,
+            mobile:mobile
         });
 
         // Token Generate
