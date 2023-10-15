@@ -1,6 +1,7 @@
 const userModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
+const asyncHandler = require('express-async-handler')
 const SECRET_KEY = "NOTESAPI";
 
 const signup = async (req, res) => {
@@ -42,7 +43,7 @@ const signup = async (req, res) => {
     }
 }
 
-const signin =async (req, res) => {
+const signin =asyncHandler(async (req, res) => {
     const {email,password}=req.body;
     try{
         // Existing user Check
@@ -62,6 +63,6 @@ const signin =async (req, res) => {
         console.log(error);
         res.status(500).json({ message: "Something went wrong!" })
     }
-}
+})
 
 module.exports = { signup, signin };
