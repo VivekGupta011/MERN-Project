@@ -15,17 +15,11 @@ app.get("/",(req,res)=>{
     res.send("Hello Vivekk!")
 })
 
-mongoose.connect("mongodb+srv://fdsafa670:sueSEUrMgXzb7O0T@cluster0.b8r0hjw.mongodb.net/?retryWrites=true&w=majority")
 
-
-.then(()=>{
-
-    app.listen(5000,()=>{
-        console.log("Server Started!");
-    })
-    
-
-})
-.catch((error)=>{
-    console.log(error);
-})
+mongoose.connect("mongodb+srv://fdsafa670:sueSEUrMgXzb7O0T@cluster0.b8r0hjw.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(error => {
+    console.error('Error connecting to MongoDB:', error);
+  });
